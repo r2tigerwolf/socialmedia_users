@@ -43,11 +43,11 @@ function populate() {
             user_table +='<div class="resp-table-row">';
             user_table +='<div class="table-body-cell userid">' + userid + '</div>';
             user_table +='<div class="table-body-cell username">' + username + '</div>';
-            user_table +='<div class="table-body-cell first_name" contenteditable="true" onblur="updatefield(' + userid + ',\'first_name\',' + i + ',\'' + fname + '\', \'' + lname + '\')">' + fname + '</div>';
-            user_table +='<div class="table-body-cell last_name" contenteditable="true" onblur="updatefield(' + userid + ',\'last_name\',' + i + ',\'' + fname + '\', \'' + lname + '\')">' + lname + '</div>';
+            user_table +='<div class="table-body-cell first_name" contenteditable="true" onblur="updatefield(' + userid + ',\'first_name\',' + i + ',\'' + fname + '\', \'' + lname + '\', \'' + fname + '\')">' + fname + '</div>';
+            user_table +='<div class="table-body-cell last_name" contenteditable="true" onblur="updatefield(' + userid + ',\'last_name\',' + i + ',\'' + fname + '\', \'' + lname + '\', \'' + lname + '\')">' + lname + '</div>';
             user_table +='<div class="table-body-cell email">' + email + '</div>';
-            user_table +='<div class="table-body-cell job" contenteditable="true" onblur="updatefield(' + userid + ',\'job\',' + i + ',\'' + fname + '\', \'' + lname + '\', \'' + job + '\')">' + job + '</div>';
-            user_table +='<div class="table-body-cell address" contenteditable="true" onblur="updatefield(' + userid + ',\'address\',' + i + ',\'' + fname + '\', \'' + lname + '\', \'' + address + '\')">' + address + '</div>';
+            user_table +='<div class="table-body-cell job" contenteditable="true" onblur="updatefield(' + userid + ',\'job\',' + i + ',\'' + fname + '\', \'' + lname + '\', \'' + job + '\', \'' + job + '\')">' + job + '</div>';
+            user_table +='<div class="table-body-cell address" contenteditable="true" onblur="updatefield(' + userid + ',\'address\',' + i + ',\'' + fname + '\', \'' + lname + '\', \'' + address + '\', \'' + address + '\')">' + address + '</div>';
             user_table +='<div class="table-body-cell country_name">' + country_name + '</div>';
             user_table +='<div class="table-body-cell enabled">';
             user_table +='<select name="status" class="status" id="userid_' +  userid + '" onchange="status(' + userid + ');">';
