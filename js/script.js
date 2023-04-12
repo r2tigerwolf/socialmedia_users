@@ -1,8 +1,9 @@
-var directory = window.location.href;
+var directory = (window.location.href).replace(/^(.+?)\/*?$/, "$1"); // remove trailing slashes
 var pathArray = directory.split('/');
 
-if(pathArray[pathArray.length - 1] != "user") directory = directory + "/user/";
-else directory = directory + "/";
+// This is to fix Path without /user
+if(pathArray[pathArray.length - 1] == "user") directory = directory + "/";
+else directory = directory + "/user/";
 
 
 function populate() {
