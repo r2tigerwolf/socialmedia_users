@@ -11,6 +11,7 @@
 
             public function select() {          
                 /*
+CREATE VIEW users_view AS    
 select distinct user_info.*, user_comments.user_id, user_comments.comments, user_comments.flag, user_country.country_name
 FROM user_info
 LEFT JOIN user_comments

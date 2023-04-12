@@ -1,5 +1,20 @@
 <?php
    defined('BASEPATH') OR exit('No direct script access allowed');
+   if (isset($_SERVER['HTTPS']) &&
+   ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+   isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+   $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+      $protocol = 'https://';
+   }
+   else {
+      $protocol = 'http://';
+   }
+
+   if($_SERVER['SERVER_NAME'] == "users.donsworld.ca" || $_SERVER['SERVER_NAME'] == "donsworld.ca" || $_SERVER['SERVER_NAME'] == "www.donsworld.ca") {
+      $baseurl = $protocol . $_SERVER['SERVER_NAME'] . "/";
+   } else {
+      $baseurl = $protocol . $_SERVER['SERVER_NAME'] . "/socialmedia_users/";
+   }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">  
@@ -13,8 +28,8 @@
       <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>      
       -->
       <title>Welcome to CodeIgniter</title>      
-      <link rel = "stylesheet" type = "text/css" href = "../css/style.css">
-      <link rel = "stylesheet" type = "text/css" href = "../css/modal.css">
+      <link rel = "stylesheet" type = "text/css" href = "<?php echo $baseurl;?>css/style.css">
+      <link rel = "stylesheet" type = "text/css" href = "<?php echo $baseurl;?>css/modal.css">
       
    </head>
    <body>
@@ -72,6 +87,6 @@
          </div>
       </div>
       <!--<script type = 'text/javascript' src = "../js/user.js"></script>-->
-      <script type = 'text/javascript' src = "../js/script.js"></script>     
+      <script type = 'text/javascript' src = "<?php echo $baseurl;?>js/script.js"></script>     
    </body>  
 </html>  

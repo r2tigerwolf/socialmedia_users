@@ -1,5 +1,12 @@
+var directory = window.location.href;
+var pathArray = directory.split('/');
+
+if(pathArray[pathArray.length - 1] != "user") directory = directory + "/user/";
+else directory = directory + "/";
+
+
 function populate() {
-    fetch('user_record', {
+    fetch(directory + 'user_record', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -11,7 +18,7 @@ function populate() {
         })
 
 
-    fetch('user_load', {
+    fetch(directory + 'user_load', {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
@@ -107,7 +114,7 @@ function updatefield(userid, fieldname, position, first_name, last_name, origina
 
     var status_dialog = document.getElementsByClassName("modal-body")[0];
     
-    fetch('user_field_update', {
+    fetch(directory + 'user_field_update', {
         method: 'POST',
         body:  JSON.stringify({
             "userid":userid,
@@ -146,7 +153,7 @@ function updatefield(userid, fieldname, position, first_name, last_name, origina
 
 
 function login() {       
-    fetch('user_login', {
+    fetch(directory + 'user_login', {
         method: 'POST',
         body:  JSON.stringify({
             "password_entered":document.getElementById("password_text").value
@@ -168,7 +175,7 @@ function login() {
 }
 
 function logout() { 
-    fetch('user_logout', {
+    fetch(directory + 'user_logout', {
         method: 'POST',
         body:  {"password_entered":""},
         headers: {
@@ -203,7 +210,7 @@ function status(statusid) {
     var status_dialog = document.getElementsByClassName("modal-body")[0];
     console.log("userid_" + statusid + " " + status);
     
-    fetch('user_update', {
+    fetch(directory + 'user_update', {
         method: 'POST',
         body:  JSON.stringify({
             "statusid":statusid,
@@ -246,7 +253,7 @@ function flag(flagid) {
     var flag_dialog = document.getElementsByClassName("modal-body")[0];
     console.log("flag_" + flagid + " " + flag);
     
-    fetch('flag_update', {
+    fetch(directory + 'flag_update', {
         method: 'POST',
         body:  JSON.stringify({
             "flagid":flagid,
