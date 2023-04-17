@@ -151,7 +151,6 @@ function updatefield(userid, fieldname, position, first_name, last_name, origina
     })
 }
 
-
 function login() {       
     fetch(directory + 'user_login', {
         method: 'POST',

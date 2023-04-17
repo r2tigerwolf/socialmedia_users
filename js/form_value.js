@@ -1,4 +1,5 @@
-// How to use:  val(element id, class, or name);
+// To get the value of an element:  val(element id or class or name);
+// To access an element:  elem(element id or class or name);
 
 function val(element) {
     var attribType = checkAttribType(element);
