@@ -14,7 +14,7 @@ function populate() {
         },})
        .then(response => response.json())
        .then(response => {
-            element("loader_percent_text")[0].innerHTML ="Loading " + response + " records";
+            elem("loader_percent_text")[0].innerHTML ="Loading " + response + " records";
         })
 
 
