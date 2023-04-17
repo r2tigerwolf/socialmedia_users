@@ -194,7 +194,7 @@ function logout() {
 }
 
 function removeElementsByClass(className){
-    const elements = element(className);
+    const elements = elem(className);
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[1]);
     }

@@ -30,6 +30,7 @@
       <title>Welcome to CodeIgniter</title>      
       <link rel = "stylesheet" type = "text/css" href = "<?php echo $baseurl;?>css/style.css">
       <link rel = "stylesheet" type = "text/css" href = "<?php echo $baseurl;?>css/modal.css">
+      <link rel="shortcut icon" href="#"> <!-- Prevents favicon.ico 404 error -->
       
    </head>
    <body>
@@ -54,7 +55,7 @@
                      <div class="table-body-cell user-header">Comments</div> 
                      <div class="table-body-cell user-header">Comments Flag</div> 
                   </div>  
-                  <!-- data will be appended here using javascript (user.js) -->
+                  <!-- data will be appended here using javascript (script.js or user.js if using jquery) -->
                </div>             
             </div>  
             <div id="status_dialog" title="Status">
