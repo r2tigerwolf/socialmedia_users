@@ -22,7 +22,7 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>User Enable/Disable Account</title> 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>-->      
       <!--
       <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
       <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>      
@@ -87,6 +87,7 @@
          </div>
       </div>
       <!--<script type = 'text/javascript' src = "../js/user.js"></script>-->
+      <script src="<?php echo $baseurl;?>js/form_value.js"></script>
       <script type = 'text/javascript' src = "<?php echo $baseurl;?>js/script.js"></script>     
    </body>  
 </html>  

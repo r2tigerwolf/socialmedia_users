@@ -14,8 +14,7 @@ function populate() {
         },})
        .then(response => response.json())
        .then(response => {
-            
-            document.getElementsByClassName("loader_percent_text")[0].innerHTML ="Loading " + response + " records";
+            element("loader_percent_text")[0].innerHTML ="Loading " + response + " records";
         })
 
 
@@ -88,15 +87,15 @@ function populate() {
             //user_table +='<div class="table-body-cell">' + flag + '</div>';
             user_table +='</div> ';
 
-            document.getElementById("body").innerHTML += user_table;     
+            elem("body").innerHTML += user_table;     
             i++;                                             
         })
         //document.getElementById("body").style.visibility = "visible";
-        document.getElementById("login_button").style.display = "none";
-        document.getElementById("password_text").style.display = "none";
-        document.getElementById("logout_button").style.display = "inline-block";
-        document.getElementsByClassName("loader")[0].style.display = "none";
-        document.getElementsByClassName("loader_percent")[0].style.display = "none";
+        elem("login_button").style.display = "none";
+        elem("password_text").style.display = "none";
+        elem("logout_button").style.display = "inline-block";
+        elem("loader")[0].style.display = "none";
+        elem("loader_percent")[0].style.display = "none";
         
     })
  }
@@ -105,7 +104,7 @@ populate();
 
 function updatefield(userid, fieldname, position, first_name, last_name, original_value) {    
     //console.log(userid + " " + fieldname + " " + position)
-    var element = document.getElementsByClassName(fieldname)[position];
+    var element = elem(fieldname)[position];
     var value = element.innerHTML;
     value = value.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML Tags
     element.innerHTML = value.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML Tags
@@ -113,7 +112,7 @@ function updatefield(userid, fieldname, position, first_name, last_name, origina
 
     if(original_value == value) return;
 
-    var status_dialog = document.getElementsByClassName("modal-body")[0];
+    var status_dialog = elem("modal-body")[0];
     
     fetch(directory + 'user_field_update', {
         method: 'POST',
@@ -129,13 +128,13 @@ function updatefield(userid, fieldname, position, first_name, last_name, origina
     })
     .then(response => response.json())
     .then(response => {
-        let element = document.getElementsByClassName(fieldname)[position];
+        let element = elem(fieldname)[position];
         element.setAttribute("onblur", 'updatefield(' + userid + ',\'' + fieldname + '\',' + position + ',\'' + first_name + '\', \'' + last_name + '\', \'' + value + '\')');
         status_dialog.style.display = "block";   
         status_dialog.innerHTML = "<h3>" + first_name + " " + last_name + "'s information has been updated</h3>";  
         // Get the modal
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];        
+        var modal = elem("myModal");
+        var span = elem("close")[0];        
         modal.style.display = "block";
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -157,7 +156,7 @@ function login() {
     fetch(directory + 'user_login', {
         method: 'POST',
         body:  JSON.stringify({
-            "password_entered":document.getElementById("password_text").value
+            "password_entered":elem("password_text").value
           }),
         headers: {
             'Accept': 'application/json',
@@ -168,9 +167,9 @@ function login() {
     .then(response => {
         data = response;
         console.log(data);
-        document.getElementById("login_button").style.display = "inline-block";
-        document.getElementById("password_text").style.display = "inline-block";
-        document.getElementById("logout_button").style.display = "none";
+        elem("login_button").style.display = "inline-block";
+        elem("password_text").style.display = "inline-block";
+        elem("logout_button").style.display = "none";
         populate();
     })
 }
@@ -188,27 +187,27 @@ function logout() {
     .then(response => {
         data = response;
         console.log(data);
-        document.getElementById("login_button").style.display = "inline-block";
-        document.getElementById("password_text").style.display = "inline-block";
-        document.getElementById("logout_button").style.display = "none";
+        elem("login_button").style.display = "inline-block";
+        elem("password_text").style.display = "inline-block";
+        elem("logout_button").style.display = "none";
         removeElementsByClass("resp-table-row");            
     })
 }
 
 function removeElementsByClass(className){
-    const elements = document.getElementsByClassName(className);
+    const elements = element(className);
     while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[1]);
     }
 }
 
 function status(statusid) {
-    var status = document.getElementById("userid_" + statusid).value;
-    var firstname = document.getElementById("userid_" + statusid);
+    var status = elem("userid_" + statusid).value;
+    var firstname = elem("userid_" + statusid);
         firstname = firstname.options[firstname.selectedIndex].getAttribute("firstname");
-    var lastname = document.getElementById("userid_" + statusid);
+    var lastname = elem("userid_" + statusid);
         lastname = lastname.options[lastname.selectedIndex].getAttribute("lastname");
-    var status_dialog = document.getElementsByClassName("modal-body")[0];
+    var status_dialog = elem("modal-body")[0];
     console.log("userid_" + statusid + " " + status);
     
     fetch(directory + 'user_update', {
@@ -227,8 +226,8 @@ function status(statusid) {
         status_dialog.style.display = "block";   
         status_dialog.innerHTML = "<h3>" + firstname + " " + lastname + "'s Status has been updated</h3>";  
         // Get the modal
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];        
+        var modal = elem("myModal");
+        var span = elem("close")[0];        
         modal.style.display = "block";
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -246,12 +245,12 @@ function status(statusid) {
 }
 
 function flag(flagid) {
-    var flag = document.getElementById("flag_" + flagid).value;
-    var firstname = document.getElementById("flag_" + flagid);
+    var flag = elem("flag_" + flagid).value;
+    var firstname = elem("flag_" + flagid);
         firstname = firstname.options[firstname.selectedIndex].getAttribute("firstname");
-    var lastname = document.getElementById("flag_" + flagid);
+    var lastname = elem("flag_" + flagid);
         lastname = lastname.options[lastname.selectedIndex].getAttribute("lastname");
-    var flag_dialog = document.getElementsByClassName("modal-body")[0];
+    var flag_dialog = elem("modal-body")[0];
     console.log("flag_" + flagid + " " + flag);
     
     fetch(directory + 'flag_update', {
@@ -270,8 +269,8 @@ function flag(flagid) {
         flag_dialog.style.display = "block";   
         flag_dialog.innerHTML = "<h3>" + firstname + " " + lastname + "'s Comment Flag has been updated</h3>";  
         // Get the modal
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];        
+        var modal = elem("myModal");
+        var span = elem("close")[0];        
         modal.style.display = "block";
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
